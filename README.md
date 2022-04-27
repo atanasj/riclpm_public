@@ -1,9 +1,8 @@
 # Temporal exploration of the Interpersonal Theory of Suicide among adolescents during treatment
 
-This repo contains `R` code used in the manuscript entitled: *"Generalisability
-of the Interpersonal Theory of Suicide to Latent Profiles of Young People
-Attending Treatment in a Suicide Prevention Service.Temporal exploration of the
-Interpersonal Theory of Suicide among adolescents during treatment"*
+This repo contains `R` code used in the manuscript entitled: *"Temporal
+exploration of the Interpersonal Theory of Suicide among adolescents during
+treatment."*
 
 Please note, due to privacy restrictions related to the [University of
 Wollongong](www.uow.edu.au) Human Research Ethics Committee (Ethics Number:
