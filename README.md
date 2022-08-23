@@ -1,3 +1,7 @@
+---
+bibliography: ./MyLib.bib
+---
+
 # Temporal exploration of the Interpersonal Theory of Suicide among adolescents during treatment
 
 This repo contains `R` code used in the manuscript entitled: *"Temporal exploration
@@ -15,6 +19,11 @@ reproduce the results reported in the manuscript. However, if you wish to access
 the data used in this study, an application can be made to the data custodian
 [Grand Pacific Health](www.gph.org.au). 
 
+## Figures
+
+![Statistical Model](./figures/graphviz/model_steveroush_edit.png)
+
+![Results Model](./figures/graphviz/combi3.png)
 
 ## TODO
 
@@ -24,4 +33,5 @@ the data used in this study, an application can be made to the data custodian
 -  [x] Add `data` dir and subdirs.
 -  [x] Add `figures` dir.
 -  [ ] Add scripts related to data cleansing and analyses.
--  [ ] Add figure `.png` file.
+-  [x] Add figure `.png` file.
+-  [x] Add `.bib` file.

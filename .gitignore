@@ -3,3 +3,4 @@
 *.rdata
 *.csv
 *.xlsx
+README_files/*
