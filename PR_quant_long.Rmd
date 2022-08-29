@@ -1,0 +1,1464 @@
+---
+title: Temporal exploration of the Interpersonal Theory of Suicide among adolescents
+  during treatment
+author:
+- name: Atanas Janackovski
+  affiliation: University of Wollongong
+  email: aj347@uowmail.edu.au
+- name: Frank P. Deane
+  affiliation: University of Wollongong
+  email: fdeane@uow.edu.au
+- name: Alex Hains
+  affiliation: University of Wollongong
+  email: alex@1234.com
+- name: Peter J. Kelly
+  affiliation: University of Wollongong
+  email: pkelly@uow.edu.au
+date: "`r format(Sys.Date(), '%d %B, %Y')`"
+bibliography: ./bib/MyLib.bib
+biblio-style: biblatex-apa
+csl: ./bib/apa.csl
+link-citations: yes
+colorlinks: yes
+always_allow_html: true
+---
+
+```{r, cleanup, include = FALSE, results = "hide", warning = FALSE}
+library("here")
+rm(list = ls(all = TRUE))
+source("./code/func.R")
+source("./code/load.R")
+
+list2env(readRDS("./data/proc/riclpm_df.rds"), .GlobalEnv)
+
+opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  results = "hide"
+)
+
+options(
+  knitr.kable.NA = "",
+  kableExtra.auto_format = FALSE,
+  knitr.table.format =
+    ifelse(knitr::pandoc_to("docx"), "simple",
+      ifelse(knitr::pandoc_to("html"), "html", "latex")
+    ),
+  tinytex.verbose = TRUE
+)
+```
+
+# Introduction
+
+For every suicide there are many more people who attempt suicide.
+In 15--29-year-olds, it is the fourth leading cause of death globally
+[World Health Organization [WHO], -@WHO2021].
+In Australia, it is the number one cause of death in young people with rates
+continuing to rise [Australian Bureau of Statistics [ABS], -@abs2021].
+The interpersonal theory of suicide (ITS) is an ideation-to-action
+framework that proposes the underlying mechanisms of suicidal behaviours
+[@joiner2005; @vanorden2010].
+It posits that three state-type and one trait-type factor contribute to suicide.
+The combination of the state-type factors: (1) perceived burdensomeness (that
+you are a liability on others), (2) thwarted belongingness (lack of reciprocally
+caring relationships), and (3) hopelessness (that burdensomeness and belonging
+will not improve), are theorised to lead to suicidal desire.
+The ITS states that the more severe that these perceptions and associated
+thoughts are, the more severe the suicidal desire.
+The fourth factor, acquired capability, is proposed to be more stable and may be
+influenced by previous painful experiences (e.g., abuse, self-injury, contact
+sports).
+This fourth factor contributes to whether someone has the capability to make a
+suicide attempt.
+However, according to the theory, capability is not a risk in and of itself.
+Without a desire for suicide---moderated by the intensity of perceptions of
+burdensomeness, belongingness, and hopelessness---capability alone is not enough
+to lead to a suicide attempt.
+More specifically, the ITS states that the causal processes of suicidal desire
+are a result of these other factors [@joiner2005; @vanorden2010].
+As such, the theory asserts it can provide a "map and compass" [@joiner2009, p.
+196] for assessment and intervention with suicidal people, and proposes
+burdensomeness and belongingness be the targets of therapy [@joiner2009].
+
+
+Assessing the putative causal processes specified by the ITS could help improve
+treatment for young people at risk of suicide.
+When conducting treatment and process oriented research, a number of
+recommendations have been made to help strengthen the design and validity of
+findings.
+Specifically, when evaluating potential causal processes and testing the
+dynamic interplay of theorised variables, there is a need to disaggregate the
+between- and within-person differences [@hamaker2015; @cole2009].
+Omitting idiographic factors inherently disconnects statistical models from the
+theoretical models they seek to test, and potentially undermines the validity of
+the empirical inferences [@curran2014; @hamaker2015; @hofmann2019a].
+Likewise, single timepoint assessment is a potential impediment.
+Causal psychological factors are often time-varying in nature, therefore
+relationships between variables are best analysed longitudinally [@kraemer1997],
+and ideally should include multiple waves of data (three or more) with shorter
+intervals between lags [@cole2009; @hamaker2015].
+Research utilising designs with the above features may offer improved
+insights into the underlying causal processes and subsequently be more useful
+in developing interventions [@hamaker2015; @cole2009].
+
+
+Findings of ITS research, both in young people and in older populations,
+generally indicate partial support for the theory's propositions [@chu2017;
+@ma2016].
+However, most of the extant studies use non-clinical populations and
+cross-sectional designs.
+Of the prospective research to date, the majority report only two timepoints
+[@chu2017; @ma2016].
+Whilst the body of longitudinal research that is more consistent with the design
+principles outlined above is growing [e.g., @kleiman2017; @rogers2019;
+@kyron2018], studies testing the theory with clinical populations of young
+people are limited [@abbott2021; @czyz2019a; @zhang2021; @wu2020].
+@czyz2019a conducted one of the most fine-grained assessments of the ITS to
+date.
+This study used ecological momentary assessment in a population of adolescents
+(13--17-years-old, *N* = 34) admitted to hospital following a suicide attempt
+and/or suicidal ideation.
+Daily severity of thwarted belongingness, perceived burdensomeness,
+hopelessness, and suicidal ideation was assessed for one month post-discharge.
+The study reported that suicidal ideation auto-regressively predicted suicidal
+ideation, whilst no cross-lagged relationships predicted suicidal ideation.
+However, the interaction between thwarted belongingness and either
+burdensomeness or hopelessness predicted same day and next day suicidal
+ideation [@czyz2019a].
+Two secondary analyses using data from a randomised control trial of cognitive
+therapy for suicide prevention with homeless youth (18--24-years-old, *N* =
+142--150) have also tested the ITS longitudinally [@zhang2021; @wu2020;
+@slesnick2020].
+One used a mediation path model with post treatment scores, tested whether
+thwarted belongingness and perceived burdensomeness at 6-months mediated the
+effects of social problem-solving at 3-months on suicidal ideation at 9-months
+post treatment [@zhang2021].
+The study found only perceived burdensomeness was a significant mediator
+[@zhang2021].
+The second study used a cross-lagged panel model to test associations between
+thwarted belongingness, perceived burdensomeness and suicidal ideation at
+baseline, 3-, 6-, and 9-months post treatment [@wu2020].
+They reported that perceived burdensomeness at baseline predicted suicidal
+ideation at 3-months, and suicidal ideation at 6-months predicted lower
+perceived burdensomeness and thwarted belongingness at 9-months post treatment
+[@wu2020].
+
+
+@abbott2021 used a random-intercept cross-lagged panel model (RI-CLPM) to test
+the effects of perceived burdensomeness and thwarted belongingness on suicidal
+ideation with a treatment seeking sample of adolescents (12--18-years-old) at
+baseline, midway, and completion of treatment of a 16-week intervention.
+They found partial support for the propositions of the ITS, with burdensomeness
+predicting suicidal ideation at baseline to midway, and suicidal ideation
+predicting burdensomeness at midway to treatment completion.
+Whilst these studies have certainly added to our understanding of the
+processes underlying the ITS, there are a number of limitations.
+All studies used small sample sizes (*N* = 34--150) [@abbott2021; @czyz2019a;
+@wu2020; @zhang2021], only one study included hopelessness as a time-varying
+predictor [@czyz2019a], and only two studies disaggregated the between-person
+effects [@abbott2021; @czyz2019a].
+Furthermore, three studies used time lags (2--6-months) [@abbott2021; @wu2020;
+@zhang2021] which may not adequately capture the dynamic nature of the relations
+between the time-varying factors proposed by the ITS [@cole2009; @hamaker2015;
+@vanorden2010].
+The ITS posits causal mechanisms that contribute to the development,
+maintenance, and treatment of suicidal desire in individuals [@joiner2009;
+@vanorden2010].
+Given the general paucity of longitudinal research with the ITS and the
+limitations to the studies outlined above, there is a need to further evaluate
+how applicable the theory is in clinical populations of young people at risk of
+suicide.
+
+
+## Aims
+
+This study aimed to evaluate the relationships between variables purported to be
+important to the development and treatment of suicidal desire during treatment
+using a naturalistic, longitudinal design.
+We tested the associations between the factors proposed by the ITS: thwarted
+belongingness, perceived burdensomeness, hopelessness and suicidal ideation over
+the course of treatment.
+To more accurately test the associations between the variables of interest, a
+RI-CLPM was used to partial out the between-person variance such that the
+relationships between study variables more accurately assessed the within-person
+dynamic processes across time [@hamaker2015].
+Additionally, given its correlation with suicide [American Psychiatric
+Association [APA],-@americanpsychiatricassociation2013], depression was also
+included in the model as a potential time-varying covariate.
+
+
+# Method
+
+We report how we determined our sample size, all data exclusions (if any), all
+manipulations, and all measures in the study.
+The present study was not preregistered.
+
+
+## Participants
+
+```{r, participant, include = TRUE, results = "hide", warning = FALSE}
+p <-
+  list(
+    n = phd_fin_wide %>% group_by(sex),
+    atsi = phd_fin_wide %>% group_by(atsi),
+    cald = phd_fin_wide %>% group_by(cald)
+  ) %>%
+    map(~ .x %>%
+      summarise(n = n()) %>%
+      mutate(prc = sprintf("%.1f", n / sum(n) * 100)))
+
+refs <-
+  phd_fin %>%
+  filter(
+    session ==  1
+    ## !is.na(c)
+  ) %>%
+  mutate(
+    ref = case_when(
+      referrer %in% c(1, 2) ~ "GP",
+      referrer %in% 3       ~ "MH",
+      referrer %in% 4       ~ "ED",
+      referrer %in% 5       ~ "psychiatrist",
+      referrer %in% 6       ~ "AHP",
+      referrer %in% 7       ~ "oth_slf_fam_fr",
+      referrer %in% 8       ~ "oth_slf_fam_fr",
+      referrer %in% 9       ~ "oth_slf_fam_fr",
+      TRUE                  ~ "miss"
+    )
+  ) %>%
+  group_by(ref) %>%
+  summarise(
+    n = n()
+  ) %>%
+  mutate(
+    prc = paste0(round(n / sum(n) * 100, 1), "%")
+  ) %>%
+  arrange(desc(n)) %>%
+  adorn_totals()
+
+```
+The study was approved by the institutional Human Research Ethics Committee.
+The dataset was a secondary analyses of data taken from a short-term outpatient
+suicide prevention program located in the Illawarra Shoalhaven region of New
+South Wales, Australia between
+`r format(ymd(min(phd_fin$date)), "%B %d, %Y")` and
+`r format(ymd(max(phd_fin$date)), "%B %d, %Y")`.
+The service offered no fee psychological support for people aged 12--25 years
+who were at mild to moderate risk of suicide and self-harm.
+The final sample consisted of
+`r paste0(n_distinct(phd_fin_wide$ID))` participants
+(`r subset(p$n, sex %in% "female", prc)`% females,
+`r subset(p$n, sex %in% "male", prc)`% male, and
+`r subset(p$n, sex %in% "other", prc)`% non-binary).
+There were
+`r paste0(subset(p$atsi, atsi %in% "ATSI", n))`
+participants in the total sample
+(`r subset(p$atsi, atsi %in% "ATSI", prc)`%)
+who identified as Aboriginal and/or Torres Strait Islander, and
+`r paste0(subset(p$cald, cald %in% "yes", n))` participants
+(`r subset(p$cald, cald %in% "yes", prc)`%)
+who identified as having a culturally and linguistically diverse background.
+The average age of the sample was
+`r sprintf("%.2f", mean(phd_fin_wide$age, na.rm = TRUE))` years
+(*SD* = `r sprintf("%.2f", sd(phd_fin_wide$age, na.rm = TRUE))`).
+This was a naturalistic sample and duration of service engagement varied
+depending on the clinical needs or recovery of the participants.
+The average number of sessions attended in the current sample was
+`r sprintf("%.2f", mean(phd_fin_wide$cov_sess, na.rm = TRUE))`,
+(*SD* = `r sprintf("%.2f", sd(phd_fin_wide$cov_sess, na.rm = TRUE))`).
+The majority of referrals were from primary care settings such as general
+practitioners
+(`r subset(refs, ref %in% "GP", prc)`)
+public mental health services
+(`r subset(refs, ref %in% "MH", prc)`)
+or emergency departments
+(`r subset(refs, ref %in% "ED", prc)`).
+A further
+`r subset(refs, ref %in% "AHP", prc)`
+came from allied health professionals and
+`r subset(refs, ref %in% "oth_slf_fam_fr", prc)`
+from other referral sources including self, family and friends.
+The remainder of participants
+(`r subset(refs, ref %in% "miss", prc)`)
+did not have source of referral information available.
+Regarding the assessment of risk and suitability for services, participants'
+overall level of risk was determined using a risk assessment matrix by a mental
+health intake clinician or their treating clinician (psychologists or clinical
+psychologists) at their initial session.
+The risk assessment matrix rated risk as 'low', 'medium', or 'high', across a
+number of potential issues, including mental state (e.g., depression,
+psychosis), history of suicidal attempts or thoughts, substance misuse, client
+strengths and availability of supports, client changeability of risk level, and
+clinician's confidence in assessment information (e.g., gaps in/or conflicting
+information, poor engagement).
+Examples of risk ratings for suicidal ideation are: 'low' (nil or vague thoughts),
+'moderate' (frequent thoughts; repeated threats); or 'high' (continual thoughts;
+clear intention).
+A cumulative risk score was tallied by summing the total number of 'low',
+'medium', and 'high' ratings.
+Clients deemed to be of lower or higher than mild to moderate risk were referred
+to more appropriate services.
+The treatment approach used was based on a cognitive behavioural therapy
+framework tailored for suicide prevention [@stanley2009], although clinicians
+were able to draw on different approaches in their clinical work.<!-- [@janackovski2021]. -->
+All participants provided informed consent to have their clinical information
+entered into a research databank, with parental/carer co-consent sought for
+participants aged 12--14 years.
+Not consenting to research participation did not change the treatment offered.
+
+
+## Measures
+
+*Interpersonal Needs Questionnaire (INQ)*.
+The 15-item INQ [@vanorden2012] is a self-report measure designed specifically
+to reflect the two interpersonal constructs of the ITS.
+Items are rated on a 7-point Likert scale with higher scores indicating higher
+severity.
+Six items measure perceived burdensomeness (PB) and nine items measure thwarted
+belongingness (TB).
+The measure has been found to be a reliable and valid measure in adolescent
+inpatient samples and young adults [@hill2014a; @horton2015].
+Taking into account the multilevel nature of the data, we calculated overall,
+between-level, and within-cluster
+($\alpha$^*2l*^, $\alpha$^*b*^, and $\alpha$^*w*^ respectively)
+composite reliability of the repeated measures [@lai2021].
+The composite reliability for the current sample was
+$\alpha$^*2l*^ =
+`r subset(mcfa_alpha$pb, label %in% "overall", est)`
+($\alpha$^*b*^ =
+`r subset(mcfa_alpha$pb, label %in% "between", est)`,
+$\alpha$^*w*^ =
+`r subset(mcfa_alpha$pb, label %in% "within", est)`)
+for burdensomeness items, and
+$\alpha$^*2l*^ =
+`r subset(mcfa_alpha$tb, label %in% "overall", est)`
+($\alpha$^*b*^ =
+`r subset(mcfa_alpha$tb, label %in% "between", est)`,
+$\alpha$^*w*^ =
+`r subset(mcfa_alpha$tb, label %in% "within", est)`)
+for belongingness items.
+The Intraclass Correlation Coefficient (ICC) was
+`r meas_icc_fin$pb$iccp` (95% CI `r meas_icc_fin$pb$ci`) for PB,
+indicating that about
+`r meas_icc_fin$pb$bwp`
+was due to between-person variability and about
+`r meas_icc_fin$pb$wip`
+was due to within-person fluctuations over time.
+The ICC for TB was
+`r meas_icc_fin$tb$iccp` (95% CI `r meas_icc_fin$tb$ci`),
+indicating that about
+`r meas_icc_fin$tb$wip`
+was due to within-person fluctuations.
+
+
+*Beck Hopelessness Scale (BHS)*.
+Hopelessness was measured using the BHS [@beck1974].
+However, the service changed from using the original 20 item true/false scale
+[true = 1 and false = 0, @beck1974] to the short 4-item version during the data
+collection period.
+The latter included items 6, 7, 9, and 15 of the original, with a 6-point Likert
+scale [@aish2001; @yip2006].
+In order to use data from both versions of the BHS for analysis, the short-form
+version had responses rescaled to 0--5, and then summed, providing scores that
+fell into the same 0 to 20 range as the full-scale version.
+In both cases, higher scores indicate higher severity.
+Both versions have previously demonstrated strong internal reliability
+[@beck1998].
+The composite reliability was
+$\alpha$^*2l*^ =
+`r subset(mcfa_alpha$bhs_20, label %in% "overall", est)`
+($\alpha$^*b*^ =
+`r subset(mcfa_alpha$bhs_20, label %in% "between", est)`,
+$\alpha$^*w*^ =
+`r subset(mcfa_alpha$bhs_20, label %in% "within", est)`)
+ for the 20-item version, and
+$\alpha$^*2l*^ =
+`r subset(mcfa_alpha$bhs_sf, label %in% "overall", est)`
+($\alpha$^*b*^ =
+`r subset(mcfa_alpha$bhs_sf, label %in% "between", est)`,
+$\alpha$^*w*^ =
+`r subset(mcfa_alpha$bhs_sf, label %in% "within", est)`)
+for the 4-item version.
+The ICC was
+`r meas_icc_fin$pb$iccp` (95% CI `r meas_icc_fin$bhs_20$ci`) for 20-item version
+indicating that about
+`r meas_icc_fin$bhs_20$wip`
+was due to within-person fluctuations.
+The ICC for 4-item version was
+`r meas_icc_fin$bhs_sf$iccp` (95% CI `r meas_icc_fin$bhs_sf$ci`),
+indicating that about
+`r meas_icc_fin$bhs_sf$wip`
+was due to within-person fluctuations.
+
+
+*Modified Scale for Suicidal Ideation (MSSI)*.
+The MSSI [@miller1986] is a clinician-administered 18-item semi-structured
+interview used to measure severity of suicidal ideation.
+The first four questions are designed as screening items to identify those whose
+suicidal ideation is severe enough to warrant administration of the entire scale
+[@miller1986].[^4]
+The MSSI has demonstrated high internal reliability in adult psychiatric
+inpatient samples [@miller1986] and inpatient suicidal youth, with high
+internal reliability on the total scores [$\alpha$ = .89, @pettit2009].
+In the current sample the composite reliability of the MSSI was
+$\alpha$^*2l*^ =
+`r subset(mcfa_alpha$si, label %in% "overall", est)`
+($\alpha$^*b*^ =
+`r subset(mcfa_alpha$si, label %in% "between", est)`,
+$\alpha$^*w*^ =
+`r subset(mcfa_alpha$si, label %in% "within", est)`).
+The ICC for MSSI was
+`r meas_icc_fin$si$iccp` (95% CI `r meas_icc_fin$si$ci`),
+indicating that about
+`r meas_icc_fin$si$wip`
+was due to within-person fluctuations.
+
+
+*Depression subscale of the Depression Anxiety and Stress Scale–short version
+(DASS21-DEP)*.
+The DASS21-DEP [@lovibond1995a] captures symptoms of depression.
+Items are rated on a 4-point Likert scale and higher scores indicate higher
+symptom severity.
+Strong internal reliability has been demonstrated in non-clinical samples of
+young people [@klonsky2009; @szabo2010], comparable to studies of adult clinical
+and community samples [@antony1998].
+Composite reliability of the DASS21-DEP in the current sample was
+$\alpha$^*2l*^ =
+`r subset(mcfa_alpha$dep, label %in% "overall", est)`
+($\alpha$^*b*^ =
+`r subset(mcfa_alpha$dep, label %in% "between", est)`,
+$\alpha$^*w*^ =
+`r subset(mcfa_alpha$dep, label %in% "within", est)`).
+The ICC for DASS21-DEP was
+`r meas_icc_fin$dep$iccp` (95% CI `r meas_icc_fin$dep$ci`),
+indicating that about
+`r meas_icc_fin$dep$wip`
+was due to within-person fluctuations.
+
+
+*Acquired Capability for Suicide Scale-Fearlessness About Death (ACSS-FAD)*.
+The 7-item ACSS-FAD [@ribeiro2014; @vanorden2008] was used to assess capability
+for suicide at baseline.
+Items are rated on a 5-point Likert scale.
+Higher scores indicate higher fearlessness about death [@vanorden2008].
+Discriminant validity is evidenced by the non-significant relationship with
+suicidal desire and depression [@vanorden2010].
+The ACSS-FAD has demonstrated good internal consistency amongst clinical samples
+of adolescents [@horton2015], and was $\alpha$ =
+`r subset(meas_rel_fin, var == "ac", max)` in the current study.
+
+
+*Inventory of Statements about Self-injury (ISAS)*.
+The ISAS [@klonsky2009; @klonsky2008] was used to measure functions of
+self-injurious behaviours at baseline.
+It contains 39 items that measure intrapersonal and interpersonal functions of
+self-injury.
+Items are rated on a 3-point Likert scale.
+Higher scores on these subscales indicate stronger endorsement of the functions
+for the participant [@klonsky2009].
+The ISAS has good test-retest reliability [@glenn2011] and construct validity
+demonstrated in a clinical sample [@klonsky2015a].
+Reliability for ISAS section 2 was $\alpha$ =
+`r subset(meas_rel_fin, var == "interp", max)`
+for interpersonal and
+$\alpha$ =
+`r subset(meas_rel_fin, var == "intrap", max)`
+for intrapersonal subscales.
+
+
+*Demographics*.
+During participants' initial session, treating clinicians also collected data on
+demographic and background clinical factors.
+This included ethnicity, relationship status, living arrangements, as well as
+previous history of deliberate self-injury, trauma, and suicide attempts.
+The total number of intervention sessions each participant received was also
+recorded.
+
+
+## Plan of analysis
+
+### Random Intercept Cross-Lagged Panel Model
+
+
+All preparation and analysis of data was carried out using R [v4.1.1,
+@rcoreteam2021].[^3]
+A random intercept cross-lagged panel model [RI-CLPM, @hamaker2015; @mulder2021]
+analysis using 'lavaan' [@rosseel2012] was performed to test the direction of
+effects between ITS variables and suicidal ideation across five waves of data.
+Model fit was assessed using the Comparative Fit Index (CFI), the Tucker-Lewis
+Index (TFI) the Root Mean Square Error of Approximation (RMSEA), and the
+Standardized Root Mean Square Residual (SRMR).
+Whilst a significant chi-square statistic indicates poor fit, this test is
+sensitive to large sample size and may reject the null hypothesis (suggesting
+poor fit) when other indicators suggest otherwise.
+Alternatively, RMSEA and SRMR values < .05, and CFI and TLI values > .95 would
+be considered a good fit of the model to the data [@hu1999].
+
+
+The traditional cross-lagged panel model (CLPM) allows individuals to vary
+across the group means and does not estimate between-person differences.
+However, it is rarely the case that there is no between-person variation in
+traits, which can result in biased and inaccurate estimates of regression
+coefficients [@hamaker2015].
+The RI-CLPM addresses this limitation through distinguishing the between-person
+(time-invariant or trait-like) and within-person (time-variant or state-like)
+variance by creating one latent variable for each construct across the
+measurement timepoints, with factor loadings constrained to 1 [@hamaker2015;
+@mulder2021].
+Constraining factor loadings in this way assumes that the random intercepts
+have the exact same influence on the observed variables at each occasion
+[@mulder2021].[^1]
+These new random-intercept latent variables are added to the traditional CLPM
+measure.
+The correlations between these latent factors represent the relationship between
+these trait-like portions of the variance.
+After accounting for the trait-like component, interpretations of regression
+coefficients are then relative to each individual’s own mean or state variations
+in the constructs.
+The state-like effect was modelled by regressing each observed variable onto its
+own latent factor, and constraining its measurement error variances to zero.
+
+Autoregressive paths in RI-CLPM models reflect within-person carryover from one
+time period to the next, or the extent to which one’s later scores are predicted
+by earlier states on the same construct.
+The cross-lagged paths reflect the degree to which participants’ states on one
+variable can be predicted by prior states on another variable, controlling for
+other variables in the model.
+Across autoregressive and cross-lagged paths, a significant positive (negative)
+relationship implies it will likely be followed by a positive (negative)
+deviation in the expected score of the relevant construct at the next occasion
+in the same direction.
+Within-person correlations indicate cross-sectional correlations between
+participants’ states on one variable and their states in another variable at the
+same timepoint.
+The assumption is that the within-person components at the first occasion are
+not correlated to the random intercepts because observations have started at an
+arbitrary timepoint in an ongoing process [@mulder2021].
+Therefore, covariances between the within-person components at the first
+occasion and the random intercepts are not included.
+The CLPM is a special case of the RI-CLPM and is nested within it, so we
+performed a chi-square difference test to compare the fit of the RI-CLPM with
+the traditional CLPM.
+This comparison tests whether removing the random intercepts significantly
+deteriorates model fit [@hamaker2015; @mulder2021].
+Figure \@ref(fig:riclpm-mod) illustrates a full RI-CLPM using two of our five
+variables for the sake of visual simplicity.
+
+### Missing Data
+
+
+Missing data was managed at the scale level and the model level.
+Initially, for all continuous measures other than the MSSI, where there was 20%
+or less missing items for a scale, the scale was prorated to calculate a
+variable score, otherwise a participant's scores were considered missing on that
+variable.
+For the MSSI, given that data was missing for participants that did not warrant
+the full administration of the measure, but to respect the potential missing
+data not related to this administration procedure, manual imputation was carried
+out to be able to compare participants on a uniform scale.
+If the screening items were below the cutoff (indicating administration of
+subsequent items should cease) then the remaining items 5 to 18 were scored 0.
+If more than one of the screening items was missing, then the case was treated
+as having missing data on the MSSI.
+Regarding missingness at the model level (across waves), given data was
+collected in a naturalistic treatment setting, missing data was expected, as
+participants attended different numbers of sessions.
+Full information maximum likelihood (FIML) estimation with robust standard
+errors is one of the recommended approaches to handling missing data of this
+kind, even data with nonnormal distributions [@rosseel2012; @yuan2000;
+@muthen2011].
+However, one assumption of the FIML approach is that data are missing at random
+(MAR).
+Data can be considered MAR when the missingness is related to some other
+variable(s) in the data set, but not the missing variable itself [@enders2010].
+To further improve the FIML approach, it is recommended that auxiliary variables
+be included in the model.
+This can help reduce bias, improve power, and provide more robust estimates.
+The recommended method is the saturated correlates approach [@graham2003;
+@enders2008; @enders2010; @blozis2013], which was implemented by the 'semTools' package
+[@jorgensen2021].
+Therefore a number of potential baseline correlates as well as variables related
+to engagement in services were included as auxiliary variables.
+Auxiliary variables consisted of participants' age, gender, personal history of
+trauma, deliberate self-injury and suicide attempts, as well as baseline scores
+on acquired capability and functions of deliberate self-injury.
+Additionally, to take into account the variability of participants engagement in
+treatment, the total number of sessions were included.
+
+
+# Results
+
+## Descriptive Analyses
+
+Descriptive statistics, including means and standard deviations for session
+frequency, total number of sessions, age at baseline, acquired capability, and
+sample proportions of gender, personal history of trauma and deliberate
+self-injury are presented in Table \@ref(tab:descr).
+Mean and standard deviations, number observed and percentages missing compared
+to time 1 for perceived burdensomeness, thwarted belongingness, hopelessness,
+depression, and severity of suicidal ideation are presented in Table \@ref(tab:means).
+Correlation between observed and auxiliary variables are presented
+in the supplementary material.
+
+
+## RI-CLPM Analyses
+
+### Model Fit
+
+The random-intercepts cross-lagged model (RI-CLPM) provided a good fit to the
+data.[^2]
+Results showed an adequate to good fit:
+CFI = `r subset(fit_stat, stat == "cfi.robust", valpr)`,
+TLI = `r subset(fit_stat, stat == "tli.robust", valpr)`,
+RMSEA = `r subset(fit_stat, stat == "rmsea.robust", valpr)`
+(95% CI [`r subset(fit_stat, stat == "rmsea.ci.lower.robust", valpr)`,
+`r subset(fit_stat, stat == "rmsea.ci.upper.robust", valpr)`]),
+SRMR = `r subset(fit_stat, stat == "srmr", valpr)`.
+Furthermore, the RI-CLPM was compared to the traditional CLPM, which did not
+include any random intercepts.
+The CLPM was a significantly worse fit to the data,
+($\Delta\chi^2$ =
+`r subset(mod_diff, term == "clpm_fit", chisq_diff)`,
+$\Delta$*df* = `r subset(mod_diff, term == "clpm_fit", df_diff)`,
+ *p* `r subset(mod_diff, term == "clpm_fit", p_value)`),
+suggesting that partitioning trait-like and state-like variance for random
+intercepts was indicated.
+
+
+### Correlation of Between and Within Person Factors
+
+The correlation between the random intercepts is reported in Table
+\@ref(tab:riclpm-cor).
+Regarding the trait-like between-person variance portion of this model, we found
+that the burdensomeness, belongingness, hopelessness, and depression random
+intercepts all had significant variance with each other, *r*s =
+`r subset(ri_cor$no, std.all %in% min(std.all), r)` to
+`r subset(ri_cor$no, std.all %in% max(std.all), r)`,
+*p*s `r subset(ri_cor$no, pvalue %in% min(pvalue), p)` to
+`r subset(ri_cor$no, pvalue %in% max(pvalue), p)`.
+These medium to large effect sizes imply that there are stable, trait-like
+differences between persons on these factors.
+This suggests that individuals who have more symptoms on one of these factors,
+in general, are also more likely to be symptomatic on the other factors.
+Additionally, the burdensomeness, belongingness, hopelessness, and depression
+random intercepts all had significant variance with suicidal ideation,
+(*r*s =
+`r subset(ri_cor$yes, std.all %in% min(std.all), r)` to
+`r subset(ri_cor$yes, std.all %in% max(std.all), r)`,
+*p*s =
+`r subset(ri_cor$yes, pvalue %in% min(pvalue), p)` to
+`r subset(ri_cor$yes, pvalue %in% max(pvalue), p)`),
+with medium effects.
+This implies that in general, people who report lower levels of belongingness or
+higher levels of burdensomeness, hopelessness, or depression, are also more
+likely to report higher levels of suicidal ideation.
+The final RI-CLPM model is shown in Figure \@ref(fig:riclpm-fig).
+The within-person, or state-like correlations, are also presented in Table
+\@ref(tab:riclpm-cor).
+Regarding the within-level variance, at T1, burdensomeness was positively
+correlated with belongingness, depression, and suicidal ideation.
+Suicidal ideation was also positively correlated with belongingness,
+hopelessness, and depression.
+At T2--T5, all variables were positively correlated with each other, ranging
+from medium to large effect sizes.
+
+
+### Autoregressive Effects
+
+Regarding the state-like within-person part of the model, standardised estimates
+of the autoregressive and cross-lagged paths are shown in Table
+\@ref(tab:riclpm-arcl).
+After the between person stability was partialed out, the autoregressive paths
+for burdensomeness were significant at times
+`r subset(within_fit$ar, rhs %in% "pb", spread)` ($\beta$s =
+`r subset(within_fit$ar, rhs %in% "pb", B_min)` to
+`r subset(within_fit$ar, rhs %in% "pb", B_max)`,
+*p*s
+`r subset(within_fit$ar, rhs %in% "pb", p_min)` to
+`r subset(within_fit$ar, rhs %in% "pb", p_max)`).
+The autoregressive paths for belongingness were significant at times
+`r subset(within_fit$ar, rhs %in% "tb", spread)` ($\beta$s =
+`r subset(within_fit$ar, rhs %in% "tb", B_min)` to
+`r subset(within_fit$ar, rhs %in% "tb", B_max)`,
+*p*s
+`r subset(within_fit$ar, rhs %in% "tb", p_min)` to
+`r subset(within_fit$ar, rhs %in% "tb", p_max)`).
+The autoregressive paths for hopelessness were significant at times
+`r subset(within_fit$ar, rhs %in% "bhs", spread)` ($\beta$s =
+`r subset(within_fit$ar, rhs %in% "bhs", B_min)` to
+`r subset(within_fit$ar, rhs %in% "bhs", B_max)`,
+*p*s
+`r subset(within_fit$ar, rhs %in% "bhs", p_min)` to
+`r subset(within_fit$ar, rhs %in% "bhs", p_max)`).
+The autoregressive paths for depression were significant at times
+`r subset(within_fit$ar, rhs %in% "dep", spread)` ($\beta$s =
+`r subset(within_fit$ar, rhs %in% "dep", B_min)` to
+`r subset(within_fit$ar, rhs %in% "dep", B_max)`,
+*p*s
+`r subset(within_fit$ar, rhs %in% "dep", p_min)` to
+`r subset(within_fit$ar, rhs %in% "dep", p_max)`).
+The autoregressive paths for suicidal ideation were significant at times
+`r subset(within_fit$ar, rhs %in% "si", spread)` ($\beta$s =
+`r subset(within_fit$ar, rhs %in% "si", B_min)` to
+`r subset(within_fit$ar, rhs %in% "si", B_max)`,
+*p*s
+`r subset(within_fit$ar, rhs %in% "si", p_min)` to
+`r subset(within_fit$ar, rhs %in% "si", p_max)`).
+
+
+### Cross-Lagged Effects
+Regarding the cross-lagged paths, burdensomeness to belongingness was
+significant at
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "tb", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "tb", B_max)`,
+*p* =
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "tb", p_max)`).
+However, the reverse paths were non-significant.
+For burdensomeness to hopelessness, significant paths were found at
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "bhs", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "bhs", B_min)` to
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "bhs", B_max)`,
+*p*s
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "bhs", p_min)` to
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "bhs", p_max)`).
+Whilst the reverse paths from hopelessness to burdensomeness were significant at
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "pb", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "pb", B_min)` to
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "pb", B_max)`,
+*p*s
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "pb", p_min)` to
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "pb", p_max)`),
+and showed marginally stronger effects.
+The paths from burdensomeness to depression was significant at
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "dep", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "dep", B_min)` to
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "dep", B_max)`,
+*p*s
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "dep", p_min)` to
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "dep", p_max)`).
+The only significant reverse path between depression and burdensomeness was at
+`r subset(within_fit$cl, rhs %in% "dep" & lhs %in% "pb", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "dep" & lhs %in% "pb", B_max)`,
+*p*s =
+`r subset(within_fit$cl, rhs %in% "dep" & lhs %in% "pb", p_min)`).
+There was also one significant path from burdensomeness to suicidal ideation at
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "si", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "si", B_max)`,
+*p*s =
+`r subset(within_fit$cl, rhs %in% "pb" & lhs %in% "si", p_max)`).
+However, two reverse paths from suicidal ideation to burdensomeness were
+significant at
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "pb", spread)`,
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "pb", B_min)` to
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "pb", B_max)`
+*p*s
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "pb", p_min)` to
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "pb", p_max)`),
+although with comparatively smaller effects.
+
+
+Regarding the cross-lagged paths for hopelessness, one path to belongingness was
+significant at
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "tb", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "tb", B_min)`,
+*p* =
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "tb", p_max)`).
+However, no belongingness to hopelessness paths were significant.
+For hopelessness to depression, significant paths were found at
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "dep", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "dep", B_min)` to
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "dep", B_max)`,
+*p*s
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "dep", p_min)` to
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "dep", p_max)`).
+No depression to hopelessness paths were significant.
+One path from hopelessness to suicidal ideation was significant at
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "si", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "si", B_max)`,
+*p* =
+`r subset(within_fit$cl, rhs %in% "bhs" & lhs %in% "si", p_max)`).
+The path from suicidal ideation to hopelessness was significant at
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "bhs", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "bhs", B_min)`
+*p* =
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "bhs", p_min)`),
+although showed a smaller effect.
+The cross-lagged paths for suicidal ideation to depression was significant at
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "dep", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "dep", B_min)`,
+*p*s =
+`r subset(within_fit$cl, rhs %in% "si" & lhs %in% "dep", p_min)`).
+However, the reverse depression to suicidal ideation paths were non-significant.
+And finally, one cross-lagged paths was significant for belongingness to
+suicidal ideation at
+`r subset(within_fit$cl, rhs %in% "tb" & lhs %in% "si", spread)`
+($\beta$s =
+`r subset(within_fit$cl, rhs %in% "tb" & lhs %in% "si", B_min)`,
+*p*s =
+`r subset(within_fit$cl, rhs %in% "tb" & lhs %in% "si", p_min)`).
+There were no significant reverse paths.
+Although the belongingness to suicidal ideation path effect size was small, this
+was the only non-reciprocal path to suicidal ideation found in the data.
+
+
+# Discussion
+
+## Main findings
+
+The present study used a naturalistic, longitudinal design to explore the
+relationships between the variables proposed by the ITS to be causally
+predictive in the development and treatment of desire for suicide: thwarted
+belongingness, perceived burdensomeness, and hopelessness [@vanorden2010].
+Furthermore, the potential confounding effects of depression on suicidal
+ideation were controlled at each timepoint.
+To achieve this, we used a RI-CLPM, a methodology that partitions the
+between-person (trait-like) and within-person (state-like) dynamic processes.
+Regarding the between-person effects, all ITS variables and depression had
+significant variance with each other and suicidal ideation.
+We found that participants who reported higher severity on one factor (e.g.,
+burdensomeness) also tended to report higher severity on another factor (e.g.,
+suicidal ideation).
+Regarding the within-person dynamics processes, our results showed that the ITS
+propositions of perceived burdensomeness, thwarted belongingness, and
+hopelessness as temporally predictive of suicidal ideation was partially
+supported.
+However, in contrast to the propositions of the ITS, the current findings
+provide evidence of a bidirectional relationship between suicidal ideation to
+burdensomeness and hopelessness [@vanorden2010; @joiner2005].
+Whilst the reciprocal relationships differ from those proposed by the ITS, a
+small body of longitudinal research has found relationships between suicidal
+ideation to burdensomeness similar to our results [@abbott2021; @rogers2019;
+@wu2020].
+However, few other studies have found a relationship where thwarted
+belongingness was positively associated with suicidal ideation [@kyron2018,
+@czyz2019a].
+Although unlike our findings that showed only thwarted belongingness predicted
+suicidal ideation during one lagged time period, @kyron2018 found there was a
+reciprocal relationship between these two factors at each measurement occasion.
+Whereas @czyz2019a found that the interaction between thwarted belongingness and
+burdensomeness or hopelessness predicted next day suicidal ideation.
+One other study has also found relationships where hopelessness has predicted
+suicidal ideation at subsequent timepoints [@kleiman2017].
+Some of the differences between our findings and the aforementioned research may
+be due to different analytic designs as well as differing variables, number of
+waves, and lag between timepoints.
+However, results are largely consistent.
+That is, whilst interpersonal factors do have an influence on suicidal ideation,
+the reverse has also been found, and the autoregressive influences on suicidal
+ideation may be more consistent than those predicted by other factors.
+
+
+Stepping through the effects in our study, from session one to two, the
+cross-lagged effect of suicidal ideation predicted hopelessness, burdensomeness,
+and depression.
+However, the effect of hopelessness on burdensomeness was stronger than both the
+respective cross-lagged and autoregressive effects of suicidal ideation and
+burdensomeness at this timepoint.
+Both suicidal ideation and hopelessness also had significant autoregressive
+effects of similar magnitude.
+Whereas no significant autoregressive effects were found for belongingness or
+depression between session one and two.
+From session two to three, suicidal ideation and hopelessness both had
+significant autoregressive effects and significantly predicted severity of
+burdensomeness, with hopelessness again showing the stronger effect size.
+Whilst burdensomeness did not have a significant autoregressive effect at this
+session, it did predict change in belongingness.
+Whereas belongingness had a significant autoregressive effect and a unique
+cross-lagged effect on suicidal ideation, albeit with a slightly smaller effect size
+than the suicidal ideation autoregressive effect.
+Depression only predicted changes in itself.
+From session three to four, burdensomeness and hopelessness both had moderate
+sized cross-lagged effects on suicidal ideation, as well as each other.
+Burdensomeness also had a significant cross-lagged effect on depression.
+With the exception of suicidal ideation, all variables had significant autoregressive effects.
+From session four to five, burdensomeness had moderate cross-lagged effects on
+hopelessness and depression.
+Whereas depression had a cross-lagged effect on burdensomeness, and hopelessness
+on belongingness.
+All variables also had significant autoregressive effects.
+Overall, our results indicate that prior severity of suicidal ideation is
+important in predicting future severity in a range of other psychological
+factors related to suicide, and perhaps most importantly, suicidal ideation
+itself.
+Whilst the effect of suicidal ideation on the other variables is not consistent
+with the ITS, it is consistent with recent findings [@abbott2021; @kyron2018;
+@rogers2019; @kleiman2017; @czyz2019a; @wu2020].
+One study with adolescent suicide attempters endorsed psychache, hopelessness,
+and escape as the three most prominent reasons for suicide [@may2016a].
+Although we did not directly measure perceptions of psychological pain or
+entrapment, these unmeasured factors could have influenced the effects of
+suicidal ideation and contributed to the pattern of our results.
+We also found a number of relationships that were predicted by the ITS
+[@joiner2005; @vanorden2010].
+The effects of belongingness on suicidal ideation and burdensomeness on
+belongingness are partially concordant with the ITS.
+However, the most consistent effect was seen in the cross-lagged effects
+involving hopelessness, which at every timepoint had a significant cross-lagged
+effect on burdensomeness or belongingness.
+Together the results may have implications for treatment and suggest it may be
+important to address hopelessness and suicidal thinking directly, rather than
+just through the theoretical change mechanisms of burdensomeness and
+belongingness [@joiner2009].
+
+
+## Implications
+
+### Theoretical
+
+This study adds to the small but growing literature on how well the ITS explains
+suicidal ideation longitudinally [@kleiman2017; @rogers2019; @kyron2018;
+@abbott2021; @czyz2019a; @zhang2021; @wu2020].
+Like these studies, our findings indicate that whilst the ITS variables are
+implicated in suicidal ideation, the relationship is more dynamic and less
+linear than proposed by the theory [@rogers2019; @joiner2005; @vanorden2010].
+Moreover, the significant between- and within-person effects indicate that
+individual differences should be considered in assessment and treatment.
+To this end, suggestions have been made that the ITS may benefit from
+incorporating dynamic processes similar to those proposed by the Fluid
+Vulnerability Theory (FVT) [@rogers2019; @bryan2016].
+Further, the moderate size of the cross-lagged effects of burdensomeness and
+hopelessness were similar to the autoregressive effects of suicidal ideation,
+indicating that other contributing mechanisms to suicidal ideation still
+remain unresolved.
+Incorporating other theoretical models may contribute to improved predictive
+accuracy via additional variables not assessed in the current study,
+specifically psychache and entrapment [@may2016a].
+Research investigating differences between the three most prominent modern
+theories of suicide---the ITS [@joiner2005; @vanorden2010], the Three Step
+Theory [3ST, @klonsky2015], and the Integrated Motivational-Volitional model
+[IMV, @oconnor2018a]---suggests that whilst they may each uniquely contribute to
+explaining suicidal ideation, there is also crossover between them [@hagan2019;
+@debeurs2019; @ordonez-carrasco2021].
+Although results vary between the studies, concurrent associations between
+suicidal ideation and hopelessness, psychache, entrapment, burdensomeness, and
+belongingness have consistently been found [@kleiman2014a; @hagan2019;
+@debeurs2019; @panagioti2012; @tarsafi2015; @troister2010].
+Given this, a more integrative and dynamic conceptualisation of suicidal
+processes may help advance our understanding of the factors that precipitate and
+maintain suicidal ideation, but also factors that counteract or protect against
+them.
+
+
+### Clinical
+
+Regarding the usefulness of the ITS in therapy, the between-person effects and
+within-level (cross-sectional) variability generally supports the propositions
+of the theory.
+That is, higher severity on ITS variables was associated with elevated scores on
+other ITS variables and suicidal ideation.
+However, the within-person dynamic processes (across waves) were not consistent
+in terms of the temporal predictions of the theory [@joiner2009; @vanorden2010].
+Whilst our findings do offer some support to the propositions of the ITS in
+terms of reductions in belongingness and burdensomeness potentially having a
+causal influence on reductions in suicidal ideation during treatment
+[@joiner2009], they also indicate that increasing hope and directly targeting
+suicidal thinking could be particularly important to address during the outset
+of therapy.
+Therefore, the relative importance of belongingness and burdensomeness as
+primary targets of treatment may need to be considered alongside the potential
+causal and reciprocal influences of other factors on suicidal thinking.
+Moreover, given that suicidal thinking was the most consistent
+predictor of subsequent severity of suicidal thinking, this still leaves a
+significant gap in our understanding of what may contribute to changes in
+suicidal ideation.
+
+
+Overall, whilst the ITS may be useful in initial assessment, a broader
+conceptualisation of suicide may be needed to help navigate the dynamic
+processes in treatment.
+Interventions most likely work via multiple processes, and similarly
+individuals' needs may be achieved via multiple strategies (e.g., direct work on
+suicidal ideation or hopelessness, challenging beliefs related to
+burdensomeness).
+Assessment regarding the stability or chronicity of suicidal ideation and other
+associated risk factors, in addition to the availability of protective factors,
+can inform a person-centred, inherently non-categorical approach to coping with
+and recovering from suicidal ideation [@pisani2016; @rogers2019; @bryan2016;
+@jobes2016].
+Most supported interventions for suicide prevention with young people
+incorporate practical strategies to help minimise suicidal behaviours, improve
+problem-solving and emotion regulation [@mufson2004; @miller2007; @pineda2013;
+@asen2012].
+These are done within the context of improving the functioning of the natural
+support systems (family, schools) [@tang2009; @mufson2004; @miller2007;
+@pineda2013; @asen2012] and may be important potential targets for early in
+treatment [@foster2017].
+One common element across interventions is the use of some type of safety plan
+[@mufson2004; @miller2007; @pineda2013; @asen2012; @bateman2013a; @stanley2009].
+Safety plans could also be considered as providing a framework for
+individualised assessment, formulation, and intervention planning.
+Given the pattern of our findings, specifically targeting hopelessness could be
+particularly important.
+Whilst involving other people in treatment will help increase clients' safety,
+it could also contribute to improved problem-solving and the attainment of
+meaningful goals [@asen2012; @rathus2014].
+Increasing meaning in life has been found to influence the relationship between
+hopelessness, ITS variables, and suicidal ideation [@kleiman2013; @kleiman2013a;
+@marco2020; @marco2016; @marco2017].
+Two therapeutic approaches that have been used to treat suicidal ideation that
+explicitly target values are dialectical behaviour therapy [@rathus2014] and
+acceptance and commitment therapy [@ducasse2018].
+Therefore, interventions that increase an awareness of the underlying functions
+of suicidal ideation, with the explicit and direct aim of developing effective
+interpersonal and intrapersonal coping strategies, and identifying and
+developing meaningful and values-based goals and behaviours may be the most
+helpful in reducing suicidal ideation.
+
+
+## Limitations and future directions
+
+There were a number of limitations to our study.
+First, the study used a convenience sample accessing a suicide prevention
+program providing services to young people deemed to be at mild-to-moderate
+severity.
+Therefore our findings may not be generalisable to more severe presentations or
+older age groups.
+Second, the treatment approach was based on a cognitive behavioural therapy
+framework tailored for suicide prevention [CBT-SP, @stanley2009].
+Although a detailed summary of this approach is beyond the scope of this
+article, some key features of CBT-SP include the implementation of a safety
+plan, building hope, and using a case formulation-based approach to
+collaboratively choose suitable targets of intervention [@stanley2009].
+Further, given therapists were able to draw on other approaches in their work,
+it is not known how closely they adhered to the CBT-SP framework.
+Overall, this may have led to heterogeneous goals and interventions, with the
+focus on ITS factors varying during and between sessions, potentially
+influencing our results.
+As such, treatments based alternative theoretical orientations, or interventions
+that focused more specifically on belonging and burden, may have yielded
+different results.
+Third, the ITS specifies that suicidal ideation is the result of the three-way
+interaction between thwarted belongingness, burdensomeness, and hopelessness.
+However, due to the limitations of sample size, we were not able to test this
+interaction.
+Third, the ITS specifies that suicidal ideation is the result of the three-way
+interaction between thwarted belongingness, burdensomeness, and hopelessness.
+However, due to the limitations of the software we used [@ozkok2021], we were
+not able to test this interaction.
+Fourth, there may have been issues related to psychometric measurement that
+contributed to these findings.
+For example, one recent study has suggested that the INQ-15 [@vanorden2012] may
+have a third factor, perceived isolation, made up from the thwarted
+belongingness items [@hunt2020], or other unmeasured factors such as psychache
+and escape, that could be more predictive of suicidal ideation [@may2016a].
+Similarly, more waves and shorter lags may have given a more granular view of
+the dynamic processes contributing to the maintenance and treatment of suicidal
+ideation.
+Future studies should seek to address the limitations outlined above, and
+longitudinally analyse additional relationships proposed by the ITS and other
+theories of suicide across larger and more diverse samples.
+
+
+## Conclusion
+
+To the best of our knowledge, this study is one of the most comprehensive
+longitudinal analysis of the ITS in a clinical sample of young people
+experiencing suicidal ideation.
+Our findings partially support the propositions of the ITS, whereby thwarted
+belongingness, perceived burdensomeness, and hopelessness are predictive of
+suicidal ideation [@vanorden2010].
+However, in contrast to the theory, prior suicidal ideation more consistently
+predicted subsequent suicidal ideation, as well as hopelessness and perceived
+burdensomeness [@vanorden2010].
+Whilst the ITS could be important in understanding the process of suicidal
+ideation and therapy, developments in the field may prosper from a more dynamic
+and theoretically integrative approach to conceptualising the risk and
+protective factors of suicide.
+
+
+
+\newpage
+
+# Data Transparency
+
+The data reported in this manuscript have been previously published and were
+collected as part of a larger data collection (at one or more points in time).
+Findings from the data collection have been reported in separate manuscripts.
+MS 1 (published) tested whether changes in perceived burdensomeness (PB) and
+thwarted belongingness (TB) mediated the effects of changes in depression and
+hopelessness on suicide risk.
+This is currently the only published work and was based on a much smaller sample
+size (*N* = 226), fewer variables, and different analyses.
+MS 2 (under review) identified three latent classes of suicidal young people
+that were distinguished by severity of burdensomeness, belongingness,
+hopelessness, suicidality, depression, anxiety, stress, and severity and
+frequency of nonsuicidal self-injury.
+MS 3 (the current manuscript) focuses on the relationships between
+burdensomeness, belongingness, hopelessness, depression, and suicidality over
+time (time~n~ to time~n+1~).
+
+
+
+\newpage
+
+# References {.tabset}
+
+\setlength{\parindent}{-0.2in} \setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt} \vspace*{-0.2in} \noindent
+
+<div custom-style=Bibliography> <div id="refs"></div> </div>
+
+\newpage
+
+# Table: Desc
+
+(ref:descr) Descriptive statistics of session frequency, baseline characteristics, and scores on relevant auxiliary variables.
+
+(ref:descr-ft) ^a^Due to low sample proportion of non-binary participants (`r subset(p$n, sex %in% "other", prc)`%), participants' identifying as non-binary had their values on the gender variable treated as missing. ISAS = Inventory of Statements about Self-injury; *N* = Total participants with available data; % Missing = percent of missing data based on total sample size (*Total* = `r paste0(n_distinct(phd_fin_wide$ID))` participants).
+
+
+```{r, descr, include = TRUE, results = "show", warning = FALSE, tidy = FALSE}
+riclpm_des_t1 %>%
+  filter(!name %in% "rel_stat") %>%
+  select(namep, m_sd, range, N, miss) %>%
+  kbl(
+    col.names = c(
+      "", "*n(%)*", "Range", "*N*", "% Missing"
+    ),
+    align = "lcccc",
+    caption = "(ref:descr)"
+  ) %>%
+  kable_styling(
+    font_size = 8
+  ) %>%
+  footnote(
+    general = "(ref:descr-ft)",
+    general_title = "Note.",
+    footnote_as_chunk = TRUE
+  )
+```
+
+
+\newpage
+
+# Table: Means of study variables
+
+(ref:means) Means, standard deviations, and ranges of variables used in the RI-CLPM.
+
+(ref:means-ft) T~*n*~ = Time~*n*~; *N* = sample size observed data at T~*n*~; % Missing = percentage of missing data in comparison to the sample size at Time 1 (*N* = `r paste0(n_distinct(phd_fin_wide$ID))`).
+
+
+```{r, means, include = TRUE, results = "show", warning = FALSE}
+riclpm_des_t15 %>%
+  kbl(
+    col.names = c(
+      "", rep(c("*M(SD)*", "Range", "*N*", "% Missing"), 5)
+    ),
+    align = c("l", rep("c", 25)),
+    caption = "(ref:means)"
+  ) %>%
+  add_header_above(
+    c("", "T1" = 4, "T2" = 4,
+      "T3" = 4, "T4" = 4, "T5" = 4
+      )
+  ) %>%
+  kable_styling(
+    font_size = 8
+  ) %>%
+  footnote(
+    general = "(ref:means-ft)",
+    general_title = "Note.",
+    footnote_as_chunk = TRUE
+  )
+```
+
+\newpage
+
+# Table: Correlations
+
+
+(ref:riclpm-cor) Summary of Correlations Between and Within Person Variables
+
+
+(ref:riclpm-cor-ft) All variables freely estimated. RI = Random intercept, representing between-person or trait-like variability. T~*n*~ = Time~*n*~, representing the within-person or state-like variability after taking into account the between person effects. PB = Perceived TB = Thwarted Belongingness; BHS = Hopelessness; DEP = Depression; SI = Suicidal Ideation. ^\*\*\*^*p* < .001; ^\*\*^*p* < .01; ^\*^*p* < .05.
+
+
+```{r, riclpm-cor, include = TRUE, results = "show", warning = FALSE}
+riclpm_cor %>%
+  kbl(
+    col.names = c(
+      "", "RI", paste0("T", 1:5)
+    ),
+    align = "lcccccc",
+    caption = "(ref:riclpm-cor)"
+  ) %>%
+  kable_styling(
+    font_size = 8
+  ) %>%
+  footnote(
+    general = "(ref:riclpm-cor-ft)",
+    general_title = "Note.",
+    footnote_as_chunk = TRUE
+  )
+```
+
+
+\newpage
+
+# Table: Autoregressive and Cross-Lagged Paths
+
+
+(ref:riclpm-arcl) Standardised Autoregressive and Cross-Lagged Paths.
+
+(ref:riclpm-arcl-ft) PB = Perceived TB = Thwarted Belongingness; BHS = Hopelessness; DEP = Depression; SI = Suicidal Ideation. Due to the large number of coefﬁcients in the table and to aid interpretation, bold is used to highlight statistically signiﬁcant effects. ^\*\*\*^*p* < .001; ^\*\*^*p* < .01; ^\*^*p* < .05.
+
+
+```{r, riclpm-arcl, include = TRUE, results = "show", warning = FALSE}
+riclpm_arcl %>%
+  select(-c(path, order)) %>%
+  kbl(
+    col.names = c(
+      "Model path", "",
+      rep(c("&beta;", "*SE*", "95% CI"), 4)
+    ),
+    align = c("l", "l", rep("c", 12)),
+    caption = "(ref:riclpm-arcl)"
+  ) %>%
+  add_header_above(
+    header = c(
+      "", "",
+      "T1 → T2" = 3,
+      "T2 → T3" = 3,
+      "T3 → T4" = 3,
+      "T4 → T5" = 3
+    )
+  ) %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(
+    font_size = 8
+  ) %>%
+  footnote(
+    general = "(ref:riclpm-arcl-ft)",
+    general_title = "Note.",
+    footnote_as_chunk = TRUE
+  )
+```
+
+
+\newpage
+
+
+# Figure 1: Statistical Model
+
+(ref:riclpm-mod) Illustration of a Random-Intercept Cross-Lagged Path Model (RI-CLPM). Prefix B denotes between-person effects. Prefix W denotes within-person effects. Squares represent observed variables and circles represent latent variables straight arrows represent direct effects and curved lines represent correlations between variables. Only two predictor variables are shown for simplicity. PB = Perceived Burdensomeness. SI = Suicidal Ideation. T~*n*~ = Time~*n*~. Auxiliary Variables = Auxiliary variables used in the saturated correlates model of managing missing data for full information maximum likelihood estimation. For simplicity, all auxiliary variables are assumed to be contained with the box on the diagram. The saturated correlates model requires that the auxiliary variables (e.g., Acquired Capability, age) correlate with (1) one another, (2) manifest predictor variables, and (3) the residual terms of the manifest variables. The auxiliary variables never correlate with a latent variable or with a latent variable residual term [@enders2010].
+
+
+```{r, riclpm-mod, fig.cap = "(ref:riclpm-mod)", include = TRUE, results = "show", warning = FALSE}
+include_graphics(
+  ifelse(
+    knitr::pandoc_to("docx"),
+    "./figures/graphviz/model_steveroush_edit.pdf",
+    "./figures/graphviz/model_steveroush_edit.png"
+  )
+)
+
+```
+
+
+\newpage
+
+# Figure 2: Results Model
+
+(ref:riclpm-fig) Prefix 'B' denotes between-person effects. Prefix 'W' denotes within-person effects. tb~*n*~ = Thwarted Belongingness at time *n*; pb~*n*~ = Perceived Burdensomeness at time ~*n*~; si~*n*~ = Suicidal Ideation at time *n*; bhs~*n*~ = Hopelessness at time *n*; dep~*n*~ = Depression at time *n*. Only statistically significant paths are graphed for simplicity. For the between-person part of the model (left of figure), correlation coefficients are shown. For the within-person autoregressive (solid lines) and cross-lagged (dashed lines) portion of the model (right of figure), standardised coefficients are shown and can be found nearest to the terminating edge of the path (near its arrow). See Table \@ref(tab:riclpm-arcl) for coefficient confidence intervals and *p* values, and Table \@ref(tab:riclpm-cor) for variances and covariances.
+
+
+```{r, riclpm-fig, fig.cap = "(ref:riclpm-fig)", include = TRUE, results = "show", warning = FALSE}
+include_graphics(
+  ifelse(knitr::pandoc_to("docx"),
+    "./figures/graphviz/combi3.pdf",
+    "./figures/graphviz/combi3.png"
+  )
+)
+
+```
+
+
+[^1]: Whether this assumption is tenable can be tested empirically [cf.
+      @mulder2021]. In the current study, this assumption was tested, however
+      the model failed to converge.
+
+[^2]: When the model was specified via the 'semTools' package, the software
+      provided the warning that the "residuals of the observed variables is not
+      positive definite". This warning may be related to correlating auxiliary
+      variables with residuals of variables that have zero residual variance
+      because they are treated as single-indicator factors to enter the model
+      [@jorgensen2021a]. To investigate this warning further we incorporated the
+      auxiliary variables directly into the model syntax via the 'lavaan'
+      package (bypassing the 'semTools' package). No warnings were generated by
+      the software and the model was accepted as is. Additionally, a sensitivity
+      analysis was run with and without the auxiliary variables. Whilst
+      estimates did not substantially change, the software provided the warning
+      "that the covariance matrix of the latent variables is not positive
+      definite", indicating that auxiliary variables are required to make valid
+      statistical inferences [@blozis2013]. Results with auxiliary variables
+      using the 'semTools' package are reported.
+
+[^3]: All code used for this manuscript is available at the github repository
+      https://github.com/atanasj/riclpm_public. Whilst data is not publicly
+      available, this repository also provides information about how the
+      interested reader can apply to the data custodians for access to the data.
+
+[^4]: See 'Missing Data' subsection below for further information about
+      how missingness on this measure was handled.
+
+\newpage
+
+
+# Supplementary Material: Correlations between study and auxiliary variables
+
+(ref:corrs) Descriptive statistics for session frequency, baseline characteristics, and scores on relevant auxiliary variables.
+
+
+(ref:corrs-ft) Subscript t*n* = Time~*n*~. pb = Perceived Burdensomeness, tb = Thwarted Belongingness; bhs = Hopelessness; dep = Depression; si = Suicidal Ideation. AC = Acquired Capability measured at time 1. *N*ses = Number of sessions attended. SH-Inter = Interpersonal reasons for self-injury; SH-Intra = Intrapersonal reasons for self-injury. Hx prefix denotes a personal history. SH = Deliberate self-injury; Tr = Trauma, SA = one or more suicide attempts; liv_fam = Living with family. Past-Med = current or past pharmacotherapy; Past-Pysc = previous engagement in psychological interventions. ^\*\*\*^*p* < .001; ^\*\*^*p* < .01; ^\*^*p* < .05.
+
+
+```{r corrs, include = TRUE, results = "show", warning = FALSE}
+
+.var <-
+  c(
+    unlist(
+      map(
+        c("pb", "tb", "bhs", "dep", "si"),
+        ~ paste0(., "<sub>", "t", 1:5, "</sub>")
+      )
+    ),
+    "AC",
+    "Age", "Sex", "*N*ses", "SH-Inter", "SH-Intra",
+    paste0("Hx-", c("SH", "Tr", "SA")),
+    "liv-fam",
+    paste0("Past", c("Med", "Psyc"))
+  )
+
+corr_mat %>%
+  mutate(
+    var = .var, .before = 1
+  ) %>%
+ select(-rowname) %>%
+  kbl(
+    ,
+    col.names = c(
+      "", .var
+    ),
+    align = c("l", rep("c", length(.var))),
+    caption = "(ref:corrs)"
+    ) %>%
+  kable_styling(
+    font_size = 8
+  ) %>%
+  footnote(
+    general = "(ref:corrs-ft)",
+    general_title = "Note.",
+    footnote_as_chunk = TRUE
+  ) %>%
+  column_spec(1, bold = TRUE) %>%
+  column_spec(1:38, width = "0.5cm")
+
+
+```
+
+
+```{r mar-fig, include = TRUE, results = "asis", warning = FALSE, eval = knitr::pandoc_to("html")}
+cat(paste0(
+  c(
+    "\\newpage",
+    "# Figure 3: MAR"
+  )),
+sep = "\n\n\n")
+```
+
+```{r, mar-fig-incl, results = "show", eval = knitr::pandoc_to("html")}
+include_graphics("./figures/miss_plots_p.png")
+```
+
+
+```{r repro-header, include = TRUE, results = "asis", warning = FALSE, eval = knitr::pandoc_to("html")}
+## NOTE this only gets run on html output
+cat(paste0(
+  c(
+    "\\newpage",
+    "# Reproducibility",
+    "<details><summary> receipt</summary>"
+  )),
+sep = "\n\n\n")
+```
+
+```{r, reproducibility-receipt, results = "show", eval = knitr::pandoc_to("html")}
+## datetime
+Sys.time()
+## repository
+git2r::repository()
+## session info
+sessionInfo()
+```
+
+
+```{r repro-end, include = TRUE, results = "asis", warning = FALSE, eval = knitr::pandoc_to("html")}
+cat(paste0(
+  c(
+    "",
+    "</details>"
+  )),
+  sep = "\n\n\n"
+  )
+```
+
+---
+abstract: |
+  ***Objective:***
+  The Interpersonal Theory of Suicide (ITS) predicts perceived burdensomeness,
+  thwarted belongingness, and hopelessness lead to suicidal ideation and
+  recommends burdensomeness and belongingness should be the targets of
+  treatment.
+  Limited research has tested if burdensomeness and belongingness temporally
+  predict suicidal ideation during treatment.
+  This study examined the bidirectional relationships between burdensomeness,
+  belongingness, hopelessness, depression, and suicidal ideation in young people
+  seeking treatment for suicide related behaviours.
+  ***Method:***
+  A sample of
+  `r paste0(n_distinct(phd_fin_wide$ID))`
+  Australian young people
+  (`r subset(p$n, sex %in% "female", prc)`%
+  females, *M*~age~ =
+  `r sprintf("%.2f", mean(phd_fin_wide$age, na.rm = TRUE))`
+  [*SD* = `r sprintf("%.2f", sd(phd_fin_wide$age, na.rm = TRUE))`])
+  completed measures of burdensomeness, belongingness, hopelessness, depression,
+  and suicidal ideation at each session of treatment
+  (*M~sessions~* = `r sprintf("%.2f", mean(phd_fin_wide$cov_sess, na.rm = TRUE))`
+  [*SD* = `r sprintf("%.2f", sd(phd_fin_wide$cov_sess, na.rm = TRUE))`]).
+  A random-intercept cross-lagged panel model (RI-CLPM) examined the within-person
+  direction of effects across the first five occasions of treatment.
+  ***Results:***
+  Autoregressive paths showed hopelessness had carryover effects across all
+  timepoints.
+  All other variables had carryover effects at four timepoints.
+  Cross-lagged paths varied, with suicidal ideation predicting depression,
+  burdensomeness and hopelessness.
+  Belongingness, burdensomeness and hopelessness predicted suicidal ideation on
+  one occasion.
+  Hopelessness predicted burdensomeness and depression at three timepoints, and
+  predicted belongingness on one occasion.
+  ***Conclusions:***
+  Results are partially consistent with the ITS, but in contrast to the theory
+  the most consistent predictor on suicidal ideation was prior suicidal
+  ideation.
+  Prior levels of hopelessness, belongingness and burdensomeness did influence
+  suicidal ideation at some timepoints, but the most consistent effects were
+  from hopelessness towards burdensomeness.
+  Theoretical and treatment implications for these findings are discussed,
+  particularly the need to directly address hopelessness in treatment.
+
+---

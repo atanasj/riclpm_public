@@ -1,0 +1,9 @@
+# NOTE html output
+bookdown::html_document2:
+  number_sections: false
+  fig_caption: yes
+  toc: yes
+  toc_depth: 3
+  toc_float: true
+  theme: paper
+  highlight: textmate
