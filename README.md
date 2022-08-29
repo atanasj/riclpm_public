@@ -1,7 +1,3 @@
----
-bibliography: ./bib/MyLib.bib
----
-
 # Temporal exploration of the Interpersonal Theory of Suicide among adolescents during treatment
 
 This repo contains `R` code used in the manuscript entitled: *"Temporal
